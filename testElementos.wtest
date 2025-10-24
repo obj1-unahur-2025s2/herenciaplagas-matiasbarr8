@@ -1,0 +1,22 @@
+import elementos.*
+import plagas.*
+
+describe "Test de elementos que son atacados por plagas" {
+  const cucas1 = new Cucarachas(poblacion=15,pesoPromedioBicho=8)
+  const mosqui1 = new Mosquitos(poblacion=50)
+  const hogar1 = new Hogar(mugre=10,confort=50)
+  const huerta1 = new Huerta(produccion=100)
+
+  test "Un hogar con 10 de mugre recibe un ataque de cucas1, entonces mugre pasa a 17.5" {
+    hogar1.recibirAtaque(cucas1)
+    assert.equals(17.5,hogar1.mugre())
+  }
+  test "Una huerta recibe un ataque de mosqui1, entonces la produccion baja a 95" {
+    huerta1.recibirAtaque(mosqui1)
+    assert.equals(95,huerta1.produccion())
+  }
+  test "Una huerta no es buena porque el nivel minimo se seteo en 200 y la produccion es 100" {
+    nivelMinimoDeProduccion.valor(200)
+    assert.notThat(huerta1.esBueno())
+  }
+}

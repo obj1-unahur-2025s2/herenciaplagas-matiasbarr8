@@ -1,0 +1,22 @@
+import elementos.*
+import plagas.*
+
+describe "Test de elementos que son atacados por plagas" {
+  const cucas1 = new Cucarachas(poblacion=15,pesoPromedioBicho=8)
+  const garra1 = new Garrapatas(poblacion=10)
+  const hogar1 = new Hogar(mugre=10,confort=50)
+  const pichichus = new Mascota(salud=100)
+
+  test "Cucas1 ataca a hogar1 enonces hogar queda con mugre 17.5 y cucas1 queda con una poblacion de 16.5" {
+    cucas1.atacarA(hogar1)
+    assert.equals(17.5,hogar1.mugre())
+    assert.equals(16.5,cucas1.poblacion())
+  }
+  test "Garra1 ataca a pichichus 2 veces, garra1 queda con 14.4 y pichichus queda con 56 de salud" {
+    garra1.atacarA(pichichus)
+    garra1.atacarA(pichichus)
+    assert.equals(56, pichichus.salud())
+    assert.equals(14.4, garra1.poblacion())
+  }
+
+}
